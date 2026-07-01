@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extintores — Bombeiros de Proença-a-Nova</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C0281C;--red-dark:#8B1A10;--red-light:#E8392A;
+  --black:#1a1714;--dark:#2d2926;--mid:#f5f2ef;
+  --white:#ffffff;--text:#1a1714;--text-soft:#4a4540;--text-muted:#7a7570;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#ffffff;color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;height:70px;background:rgba(26,23,20,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(192,40,28,0.3)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer}
+.nav-emblem{width:44px;height:44px;object-fit:contain;flex-shrink:0}
+.nav-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:white;line-height:1.2}
+.nav-name span{color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:3px;display:block;font-family:'DM Sans',sans-serif;font-weight:300;text-transform:uppercase}
+.nav-back{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;border:1px solid rgba(255,255,255,0.2);padding:8px 16px;border-radius:2px}
+.nav-back:hover{color:white;border-color:var(--red);background:rgba(192,40,28,0.1)}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:70px;position:relative;display:flex;align-items:center;overflow:hidden;background:#1a1714}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(192,40,28,0.9) 0%,rgba(100,10,5,0.95) 100%)}
+.hero-pattern{position:absolute;inset:0;opacity:0.05;background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);background-size:50px 50px}
+.hero-content{position:relative;z-index:2;padding:60px 8vw;max-width:1100px;margin:0 auto;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:6px 16px;border-radius:2px;margin-bottom:28px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9)}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,130px);line-height:0.9;letter-spacing:2px;color:white;margin-bottom:24px}
+.hero-title span{color:rgba(255,255,255,0.35);display:block;font-size:clamp(24px,4vw,48px);letter-spacing:6px}
+.hero-desc{font-size:18px;color:rgba(255,255,255,0.8);max-width:560px;line-height:1.7;font-weight:300;margin-bottom:40px}
+.hero-contacts{display:flex;gap:32px;flex-wrap:wrap}
+.hero-contact{display:flex;flex-direction:column;gap:2px}
+.hero-contact-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45)}
+.hero-contact-value{font-size:15px;color:white;font-weight:500}
+.hero-contact-value a{color:white;text-decoration:none}
+.hero-contact-value a:hover{color:rgba(255,200,200,1)}
+.hero-num{position:absolute;right:4vw;bottom:-20px;font-family:'Bebas Neue',sans-serif;font-size:clamp(150px,22vw,320px);color:rgba(255,255,255,0.04);letter-spacing:-5px;user-select:none;line-height:1}
+
+/* SECTIONS */
+section{padding:90px 8vw}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section-label::before{content:'';width:30px;height:2px;background:var(--red)}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,60px);line-height:1;letter-spacing:1px;margin-bottom:20px;color:var(--text)}
+.section-desc{font-size:16px;color:var(--text-soft);line-height:1.7;max-width:640px;margin-bottom:48px}
+
+/* INTRO */
+.intro{background:#ffffff}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.intro-text p{font-size:17px;color:var(--text-soft);line-height:1.8;margin-bottom:20px}
+.intro-highlight{background:var(--red);color:white;padding:28px 32px;border-radius:4px;margin-top:32px}
+.intro-highlight p{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.92);margin:0}
+.intro-visual{display:flex;flex-direction:column;gap:16px}
+.contact-card{background:var(--mid);padding:24px 28px;border-left:3px solid var(--red);border-radius:0 4px 4px 0}
+.contact-card-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--red);margin-bottom:16px}
+.contact-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;font-size:14px;color:var(--text-soft)}
+.contact-row strong{color:var(--text);font-weight:500;min-width:80px}
+.contact-row a{color:var(--red);text-decoration:none}
+.contact-row a:hover{text-decoration:underline}
+
+/* SERVICES */
+.services{background:#f8f5f2}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px}
+.service-card{background:white;padding:36px 32px;border-top:3px solid transparent;transition:all 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.service-card:hover{border-top-color:var(--red);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+.service-card-icon{font-size:36px;margin-bottom:16px}
+.service-card-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--text);margin-bottom:10px}
+.service-card-text{font-size:14px;color:var(--text-soft);line-height:1.6}
+.oficina-banner{background:var(--dark);color:white;padding:40px 40px;border-radius:4px;margin-top:32px;display:flex;align-items:center;gap:32px}
+.oficina-icon{font-size:48px;flex-shrink:0}
+.oficina-text h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:8px;color:white}
+.oficina-text p{font-size:15px;color:rgba(255,255,255,0.7);line-height:1.6}
+
+/* TYPES */
+.types{background:white}
+.types-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.type-card{border:2px solid rgba(192,40,28,0.1);border-radius:4px;overflow:hidden;transition:all 0.25s}
+.type-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(192,40,28,0.1)}
+.type-header{background:var(--red);padding:20px 24px;display:flex;align-items:center;gap:14px}
+.type-badge{background:rgba(255,255,255,0.2);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:white;padding:4px 12px;border-radius:2px}
+.type-header-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:white}
+.type-body{padding:24px}
+.type-ideal{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:8px}
+.type-desc{font-size:14px;color:var(--text-soft);line-height:1.6}
+
+/* MAINTENANCE */
+.maintenance{background:#f8f5f2}
+.maint-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px}
+.maint-card{background:white;padding:28px 24px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.maint-card-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--red);margin-bottom:8px}
+.maint-card-text{font-size:14px;color:var(--text-soft);line-height:1.6}
+.maint-note{background:var(--text);color:white;padding:24px 32px;border-radius:4px;font-size:15px;line-height:1.7;text-align:center}
+.maint-note strong{color:rgba(255,200,180,1)}
+
+/* FORMAÇÕES */
+.formacoes{background:white}
+.form-table{width:100%;border-collapse:collapse;margin-bottom:28px}
+.form-table th{background:var(--red);color:white;padding:16px 20px;text-align:left;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;font-weight:400}
+.form-table td{padding:14px 20px;border-bottom:1px solid rgba(0,0,0,0.06);font-size:14px;color:var(--text-soft);line-height:1.5;vertical-align:top}
+.form-table tr:nth-child(even) td{background:#faf8f5}
+.form-table tr:hover td{background:rgba(192,40,28,0.03)}
+.form-note{background:var(--mid);border-left:3px solid var(--red);padding:20px 24px;font-size:14px;color:var(--text-soft);line-height:1.7;border-radius:0 4px 4px 0}
+
+/* CASES */
+.cases{background:#f8f5f2}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.case-card{background:white;padding:28px 24px;border-radius:4px;border-top:3px solid var(--red);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.case-icon{font-size:32px;margin-bottom:16px}
+.case-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--text);margin-bottom:10px}
+.case-text{font-size:14px;color:var(--text-soft);line-height:1.6}
+
+/* CTA */
+.cta-section{background:var(--red);padding:80px 8vw;text-align:center}
+.cta-section h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,80px);letter-spacing:3px;color:white;margin-bottom:16px;line-height:1}
+.cta-section p{font-size:18px;color:rgba(255,255,255,0.85);max-width:500px;margin:0 auto 40px;line-height:1.7;font-weight:300}
+.cta-contacts{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.cta-contact{text-align:center}
+.cta-contact-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:4px}
+.cta-contact-value{font-size:16px;color:white;font-weight:500}
+.cta-contact-value a{color:white;text-decoration:none}
+
+/* FOOTER */
+footer{background:var(--black);padding:32px 8vw;text-align:center}
+footer p{font-size:12px;color:rgba(255,255,255,0.3)}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s,transform 0.6s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .intro-grid,.services-grid,.types-grid,.maint-grid,.cases-grid{grid-template-columns:1fr}
+  .oficina-banner{flex-direction:column;gap:16px;text-align:center}
+  .hero-contacts{flex-direction:column;gap:16px}
+  .cta-contacts{flex-direction:column;gap:20px}
+  .form-table{font-size:13px}
+  .form-table th,.form-table td{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img class="nav-emblem" src="logo-full.png" alt="Brasão Bombeiros Voluntários de Proença-a-Nova">
+    <div class="nav-name">Bombeiros Voluntários<span>Proença-a-Nova</span></div>
+  </a>
+  <a href="index.html" class="nav-back">← Voltar ao site</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-num">🧯</div>
+  <div class="hero-content">
+    <div class="hero-badge">🔥 Sistemas Contra Incêndios</div>
+    <h1 class="hero-title">
+      <span>Bombeiros de Proença-a-Nova</span>
+      Extintores
+    </h1>
+    <p class="hero-desc">Um extintor pode evitar um desastre. Pense na sua segurança — adquira, revise e mantenha o seu extintor connosco.</p>
+    <div class="hero-contacts">
+      <div class="hero-contact">
+        <div class="hero-contact-label">Email</div>
+        <div class="hero-contact-value"><a href="mailto:extintores@bvproencaanova.pt">extintores@bvproencaanova.pt</a></div>
+      </div>
+      <div class="hero-contact">
+        <div class="hero-contact-label">Telemóvel</div>
+        <div class="hero-contact-value"><a href="tel:962603314">962 603 314</a></div>
+      </div>
+      <div class="hero-contact">
+        <div class="hero-contact-label">Telefone</div>
+        <div class="hero-contact-value"><a href="tel:274671444">274 671 444</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRODUÇÃO -->
+<section class="intro">
+  <div class="section-inner">
+    <div class="intro-grid fade-in">
+      <div class="intro-text">
+        <div class="section-label">Introdução</div>
+        <h2 class="section-title">A Sua Segurança<br>É a Nossa Prioridade</h2>
+        <p>Nos Bombeiros Voluntários de Proença-a-Nova pode fazer a <strong>aquisição do seu extintor</strong>, adequado às suas necessidades específicas.</p>
+        <p>Pode também realizar a <strong>revisão e manutenção</strong> do seu extintor connosco, garantindo que está sempre pronto a ser utilizado em caso de emergência.</p>
+        <p>Dispomos ainda de uma <strong>oficina móvel</strong> que se pode deslocar até si, para maior comodidade.</p>
+        <div class="intro-highlight">
+          <p>Preserve o seu bem estar e esteja sempre protegido — estamos cá para ajudar!</p>
+        </div>
+      </div>
+      <div class="intro-visual">
+        <div class="contact-card">
+          <div class="contact-card-title">Contactos Diretos</div>
+          <div class="contact-row"><strong>Morada</strong> Largo dos Bombeiros N.º13, Proença-a-Nova</div>
+          <div class="contact-row"><strong>Email</strong> <a href="mailto:extintores@bvproencaanova.pt">extintores@bvproencaanova.pt</a></div>
+          <div class="contact-row"><strong>Telemóvel</strong> <a href="tel:962603314">962 603 314</a></div>
+          <div class="contact-row"><strong>Telefone</strong> <a href="tel:274671444">274 671 444</a></div>
+        </div>
+        <div style="background:var(--mid);padding:24px 28px;border-radius:4px;text-align:center">
+          <div style="font-size:48px;margin-bottom:12px">🚐</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--text);margin-bottom:6px">Oficina Móvel</div>
+          <div style="font-size:14px;color:var(--text-soft)">Deslocamo-nos até si para realizar a revisão dos seus extintores no local</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services">
+  <div class="section-inner">
+    <div class="section-label">Serviços</div>
+    <h2 class="section-title">O Que Oferecemos</h2>
+    <p class="section-desc">Para além de prestar socorro à comunidade, os Bombeiros de Proença-a-Nova disponibilizam um conjunto completo de serviços relacionados com extintores.</p>
+    <div class="services-grid fade-in">
+      <div class="service-card">
+        <div class="service-card-icon">🛒</div>
+        <div class="service-card-title">Venda de Extintores</div>
+        <div class="service-card-text">Adquira o extintor adequado às suas necessidades — doméstico, comercial ou industrial. Aconselhamos o tipo certo para cada situação.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🔧</div>
+        <div class="service-card-title">Revisão e Manutenção</div>
+        <div class="service-card-text">Realizamos a inspeção periódica e manutenção completa dos seus extintores, garantindo que estão em perfeitas condições de funcionamento.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🚐</div>
+        <div class="service-card-title">Oficina Móvel</div>
+        <div class="service-card-text">A nossa oficina móvel desloca-se até si e realiza as revisões no próprio momento, com rapidez e eficiência, sem necessidade de transporte.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🎓</div>
+        <div class="service-card-title">Formação em Manuseamento</div>
+        <div class="service-card-text">Curso de Manuseamento de Meios de 1ª Intervenção com 4 horas de duração, para até 15 formandos, com componente teórica e prática.</div>
+      </div>
+    </div>
+    <div class="oficina-banner fade-in">
+      <div class="oficina-icon">🔴</div>
+      <div class="oficina-text">
+        <h3>Sistemas Contra Incêndios</h3>
+        <p>Fornecemos também sinalética de segurança, carretéis, caixas de mangueiras, mantas de fogo e kits de primeiros socorros — tudo o que a sua empresa ou estabelecimento necessita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOS DE EXTINTORES -->
+<section class="types">
+  <div class="section-inner">
+    <div class="section-label">Tipos de Extintores</div>
+    <h2 class="section-title">Qual é o Certo<br>Para Si?</h2>
+    <p class="section-desc">Cada tipo de extintor é adequado a diferentes classes de incêndio. Conhecer as diferenças pode salvar vidas.</p>
+    <div class="types-grid fade-in">
+      <div class="type-card">
+        <div class="type-header">
+          <div class="type-badge">CO₂</div>
+          <div class="type-header-title">Dióxido de Carbono</div>
+        </div>
+        <div class="type-body">
+          <div class="type-ideal">Ideal para:</div>
+          <div class="type-desc">Incêndios em líquidos inflamáveis (Classe B) e equipamentos elétricos. Apaga por abafamento sem deixar resíduos.</div>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-header">
+          <div class="type-badge">ABF</div>
+          <div class="type-header-title">Água Aditivada</div>
+        </div>
+        <div class="type-body">
+          <div class="type-ideal">Ideal para:</div>
+          <div class="type-desc">Incêndios em materiais sólidos combustíveis (Classe A): madeira, papel, tecidos. Apaga por resfriamento. Não usar em líquidos ou elétrica.</div>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-header">
+          <div class="type-badge">ABC</div>
+          <div class="type-header-title">Pó Químico ABC</div>
+        </div>
+        <div class="type-body">
+          <div class="type-ideal">Ideal para:</div>
+          <div class="type-desc">Incêndios em sólidos (A), líquidos inflamáveis (B) e gases combustíveis (C). Versátil e de ação rápida. Pode danificar equipamentos eletrónicos.</div>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-header">
+          <div class="type-badge">AL</div>
+          <div class="type-header-title">Classe AL</div>
+        </div>
+        <div class="type-body">
+          <div class="type-ideal">Ideal para:</div>
+          <div class="type-desc">Baterias de Lítio (veículos elétricos, eletrónicos). Isola o metal e abafa o fogo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTÂNCIA DA MANUTENÇÃO -->
+<section class="maintenance">
+  <div class="section-inner">
+    <div class="section-label">Manutenção</div>
+    <h2 class="section-title">Porque é Importante<br>Fazer a Manutenção?</h2>
+    <p class="section-desc">Por fora pode parecer impecável — por dentro pode não transmitir a mesma segurança. Não arrisque.</p>
+    <div class="maint-grid fade-in">
+      <div class="maint-card">
+        <div class="maint-card-title">🔥 Funcionamento em Incêndio</div>
+        <div class="maint-card-text">Garante o funcionamento correto no momento em que mais importa — quando há um incêndio. Um extintor com falha pode custar vidas.</div>
+      </div>
+      <div class="maint-card">
+        <div class="maint-card-title">⚠️ Prevenção de Falhas</div>
+        <div class="maint-card-text">Evita falhas durante emergências causadas por pressão incorreta, válvulas obstruídas ou agente extintor degradado.</div>
+      </div>
+      <div class="maint-card">
+        <div class="maint-card-title">🛡️ Segurança Geral</div>
+        <div class="maint-card-text">Aumenta a segurança das pessoas e edifícios, cumprindo as normas legais obrigatórias de segurança contra incêndios.</div>
+      </div>
+      <div class="maint-card">
+        <div class="maint-card-title">🔍 Verificação do Extintor</div>
+        <div class="maint-card-text">Verificamos a pressão interna, o estado do agente extintor, a validade do selo, a mangueira e todos os componentes críticos.</div>
+      </div>
+    </div>
+    <div class="maint-note fade-in">
+      Estas são só algumas das razões pelas quais a manutenção é essencial. <strong>Por fora pode parecer impecável — por dentro pode não transmitir a mesma segurança.</strong> Não deixe para depois.
+    </div>
+  </div>
+</section>
+
+<!-- FORMAÇÕES -->
+<section class="formacoes" style="background:white">
+  <div class="section-inner">
+    <div class="section-label">Formação</div>
+    <h2 class="section-title">Ações de Formação<br>Disponíveis</h2>
+    <p class="section-desc">Os Bombeiros Voluntários de Proença-a-Nova ministram formações nas instalações do cliente, com componente teórica e prática.</p>
+    <table class="form-table fade-in">
+      <thead>
+        <tr>
+          <th>Área de Formação — Saúde</th>
+          <th>Área de Formação — Proteção de Pessoas e Bens</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Curso Prático de Primeiros Socorros com SBV — Empresas<br><em>8 horas · até 15 formandos</em></td>
+          <td>Combate a Incêndios e Evacuação de Edifícios — Conceitos Básicos<br><em>8 horas · até 15 formandos</em></td>
+        </tr>
+        <tr>
+          <td>Curso de Suporte Básico de Vida Adulto<br><em>4 horas · até 15 formandos</em></td>
+          <td>Curso de Prevenção e Combate a Incêndios<br><em>7 horas · até 15 formandos</em></td>
+        </tr>
+        <tr>
+          <td>Curso de Suporte Básico de Vida Pediátrico<br><em>4 horas · até 15 formandos</em></td>
+          <td>Curso de Manuseamento de Meios de 1ª Intervenção<br><em>4 horas · até 15 formandos</em></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="form-note fade-in">
+      Todas as ações de formação possuem componente teórica e prática. As ações podem ser ministradas nas instalações do cliente, desde que possuam os espaços necessários. A modalidade de frequência é <strong>presencial</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- CASOS REAIS -->
+<section class="cases">
+  <div class="section-inner">
+    <div class="section-label">Casos Reais</div>
+    <h2 class="section-title">Quando um Extintor<br>Faz a Diferença</h2>
+    <p class="section-desc">Apenas alguns exemplos de situações onde ter um extintor adequado e em bom estado pode evitar um desastre.</p>
+    <div class="cases-grid fade-in">
+      <div class="case-card">
+        <div class="case-icon">⚡</div>
+        <div class="case-title">Curto-Circuito Elétrico</div>
+        <div class="case-text">Um defeito numa instalação elétrica pode provocar um princípio de incêndio. Um extintor adequado permite controlar rapidamente as chamas e evitar a propagação do fogo.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-icon">🚗</div>
+        <div class="case-title">Carro a Arder na Estrada</div>
+        <div class="case-text">Uma avaria mecânica ou fuga de combustível pode causar incêndio no veículo. Um extintor permite combater o fogo numa fase inicial, aumentando a segurança dos ocupantes.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-icon">🚜</div>
+        <div class="case-title">Incêndio num Trator</div>
+        <div class="case-text">O sobreaquecimento do motor ou a acumulação de palha pode provocar incêndio. O uso imediato de um extintor pode impedir que o fogo se espalhe para os campos agrícolas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Preserve o Seu<br>Bem Estar!</h2>
+  <p>Proteja o que é mais valioso. Faça a manutenção dos seus extintores connosco e garanta a segurança de todos ao seu redor.</p>
+  <div class="cta-contacts">
+    <div class="cta-contact">
+      <div class="cta-contact-label">Email</div>
+      <div class="cta-contact-value"><a href="mailto:extintores@bvproencaanova.pt">extintores@bvproencaanova.pt</a></div>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-label">Telemóvel</div>
+      <div class="cta-contact-value"><a href="tel:962603314">962 603 314</a></div>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-label">Telefone</div>
+      <div class="cta-contact-value"><a href="tel:274671444">274 671 444</a></div>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-label">Morada</div>
+      <div class="cta-contact-value">Largo dos Bombeiros N.º13, Proença-a-Nova</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Bombeiros Voluntários de Proença-a-Nova · Sistemas Contra Incêndios · <a href="mailto:extintores@bvproencaanova.pt" style="color:rgba(255,255,255,0.4)">extintores@bvproencaanova.pt</a></p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.1 }
+);
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
